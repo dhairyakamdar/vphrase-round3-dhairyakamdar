@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+
+{% block body %}
+ <div class = "button-group">
+    <p class="font-weight-bold">Mobile Phones Database - vPhrase Mobiles Pvt. Ltd. </p>
+ <a href ="{% url 'display_mobiles' %}" class="btn btn-primary btn-md" role="button"> Display Mobiles in the Data Base </a>
+ <a href ="{% url 'add_mobile' %}" class="btn btn-primary btn-md" role="button"> Add a Mobile (+) </a>
+
+
+</div>
+
+<br>
+
+
+<table class ="table table-hover">
+    <thread>
+        <tr>
+            <th>id</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>RAM  </th>
+            <th>STORAGE </th>
+            <th>PRICE </th>
+            <th>AVAILABILITY </th>
+        </tr>
+    </thread>
+
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.idno }} </td>
+            <td>{{ item.brand}} </td>
+            <td>{{ item.name}} </td>
+            <td>{{ item.ram }}</td>
+            <td>{{ item.storage }} </td>
+            <td>{{ item.price }} </td>
+            <td>{{ item.stock }} </td>
+            <td>
+                <a href ="{% url 'edit_mobile' item.pk%}" class ="btn btn-warning btn-sm" role="button"> Edit </a>
+                  <a href ="{% url 'del_mobile' item.pk%}" class ="btn btn-danger btn-sm" role="button"> Delete (X) </a>
+        </tr>
+        {% endfor%}
+    </tbody>
+</table>
+
+{% endblock %}
