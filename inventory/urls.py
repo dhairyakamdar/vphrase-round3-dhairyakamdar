@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from .views import *
+from django.urls import path
+from . import views
 
 
 urlpatterns =[
@@ -15,6 +17,11 @@ urlpatterns =[
 
 
     url(r'^del_mobile/(?P<pk>\d+)$', del_mobile, name = 'del_mobile'),
-    
 
+   
+    # url(r'^search/(?P<pk>\d+)$', search, name = 'search'),
+
+    # path('search/', search, name='search')
+
+    
 ]

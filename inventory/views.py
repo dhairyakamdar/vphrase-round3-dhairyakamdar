@@ -9,7 +9,7 @@ def index(request):
 
 
 def display_mobiles(request):
-    items = mobile.objects.all()
+    items = phone.objects.all()
     context = {
         'items' : items,
     }
@@ -47,15 +47,36 @@ def edit_device(request,pk,model,cls):
         return render(request, 'edit_item.html', {'form' : form})
 
 def edit_mobile(request,pk):
-    return edit_device(request,pk,mobile,mobileform)
+    return edit_device(request,pk,phone,mobileform)
 
 def del_mobile(request,pk):
-    mobile.objects.filter(id=pk).delete()
+    phone.objects.filter(id=pk).delete()
 
-    items=mobile.objects.all()
+    items=phone.objects.all()
     
     context ={
         'items' : items
     }
     return render(request, 'index.html',context)
 
+
+# def search(request):
+#     if request.method == 'GET' :
+#         mobile_name = request.GET.get('search')
+#         try :
+#             status=mobile.objects.filter(name__icontains=mobile_name)
+#         except mobile.DoesNotExist:
+#             status=None
+#         return render(request,"search.html",{"books":status})
+#     else :
+#         return render(request,"search.html",{})
+
+# def search(request):
+
+#     if request.method == 'GET':
+#         form = new_form(request.POST)
+#         if form.is_valid():
+#             search_query = request.GET.get('search', None)
+#             if search_query:
+#                 mobile = mobile.objects.filter(name__icontains=search_query)
+                

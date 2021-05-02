@@ -2,12 +2,17 @@
 
 {% block body %}
  <div class = "button-group">
-    <p class="font-weight-bold">Mobile Phones Database - vPhrase Mobiles Pvt. Ltd. </p>
- <a href ="{% url 'display_mobiles' %}" class="btn btn-primary btn-md" role="button"> Display Mobiles in the Data Base </a>
- <a href ="{% url 'add_mobile' %}" class="btn btn-primary btn-md" role="button"> Add a Mobile (+) </a>
-
-
-</div>
+    <p class="font-weight-bold">Mobile Phones Database - vPhrase Mobiles Pvt. Ltd.    - Developed by Dhairya Kamdar</p>
+ <a href ="{% url 'display_mobiles' %}" class="btn btn-primary btn-md" role="button"> Display the Phones in the Data Base </a>
+ <a href ="{% url 'add_mobile' %}" class="btn btn-primary btn-md" role="button"> Add a Phone (+) </a>
+ 
+ <div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Enter the Phone to be Searched" aria-label="Search"
+    aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary">
+  <a href="{% url 'display_mobiles' %}">Click here!</a>
+  </button>
+</div> 
 
 <br>
 
@@ -19,9 +24,10 @@
             <th>Brand</th>
             <th>Model</th>
             <th>RAM  </th>
-            <th>STORAGE </th>
-            <th>PRICE </th>
-            <th>AVAILABILITY </th>
+            <th>Storage </th>
+            <th>Price </th>
+            {% comment %} <th>Stock Qty</th> {% endcomment %}
+            <th>Availibility </th>
         </tr>
     </thread>
 
@@ -34,7 +40,8 @@
             <td>{{ item.ram }}</td>
             <td>{{ item.storage }} </td>
             <td>{{ item.price }} </td>
-            <td>{{ item.stock }} </td>
+            {% comment %} <td>{{ item.stock_qty }} </td> {% endcomment %}
+            <td>{{ item.availibility }} </td>
             <td>
                 <a href ="{% url 'edit_mobile' item.pk%}" class ="btn btn-warning btn-sm" role="button"> Edit </a>
                   <a href ="{% url 'del_mobile' item.pk%}" class ="btn btn-danger btn-sm" role="button"> Delete (X) </a>
